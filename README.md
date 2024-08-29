@@ -27,7 +27,7 @@ image_file = item['image']
 Do not forget that your image encoder path is clip(vit-H) not clip(vit-G)!!
 ```
 accelerate launch --num_processes 8  --multi_gpu  --mixed_precision "fp16" \
-  tutorial_train_sdxl.py \
+  tutorial_train_sdxl_plus.py \
   --pretrained_model_name_or_path="stable-diffusion-xl-base-1.0" \
   --image_encoder_path="IP-Adapter/models/image_encoder" \
   --pretrained_ip_adapter_path="IP-Adapter/sdxl_models/ip-adapter-plus_sdxl_vit-h.bin" \
