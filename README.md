@@ -42,3 +42,22 @@ accelerate launch --num_processes 8  --multi_gpu  --mixed_precision "fp16" \
   --output_dir="sd-ip_adapter_p" \
   --save_steps=10000
 ```
+
+Also, you can train IP-adapter with the image encoder 
+```
+accelerate launch --num_processes 8  --multi_gpu  --mixed_precision "fp16" \
+  tutorial_train_sdxl_IE.py \
+  --pretrained_model_name_or_path="stable-diffusion-xl-base-1.0" \
+  --image_encoder_path="IP-Adapter/models/image_encoder" \
+  --pretrained_ip_adapter_path="IP-Adapter/sdxl_models/ip-adapter-plus_sdxl_vit-h.bin" \
+  --data_json_file="IP-Adapter/train.json" \
+  --data_root_path="" \
+  --mixed_precision="fp16" \
+  --resolution=512 \
+  --train_batch_size=8 \
+  --dataloader_num_workers=4 \
+  --learning_rate=1e-04 \
+  --weight_decay=0.01 \
+  --output_dir="sd-ip_adapter_image_encoder" \
+  --save_steps=10000
+```
