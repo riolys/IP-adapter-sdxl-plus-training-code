@@ -505,7 +505,7 @@ def main():
             
             if global_step % args.save_steps == 0:
                 save_path = os.path.join(args.output_dir, f"checkpoint-{global_step}")
-                accelerator.save_state(save_path)
+                accelerator.save_state(save_path, safe_serialization=False)
             begin = time.perf_counter()
 
                 
